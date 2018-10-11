@@ -12,8 +12,8 @@ public class Calculator {
         this.currencyRepository = currencyRepository;
     }
 
-    public double calculate(double amount, Long currencyRateFrom, Long currencyRateTo){
-        return amount*currencyRateFrom / currencyRateTo;
+    public double calculate(double amount, CurrencyModel currencyModelFrom, CurrencyModel currencyModelTo){
+        return amount*currencyModelFrom.getRate() / (currencyModelTo.getRate() * currencyModelTo.getUnit());
     }
 
     public CurrencyModel getCurrencyByCode(String code){

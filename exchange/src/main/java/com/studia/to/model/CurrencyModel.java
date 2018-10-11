@@ -3,8 +3,17 @@ package com.studia.to.model;
 public class CurrencyModel {
     private String name;
     private String code;
-    private Double unit;
-    private Long rate;
+    private Integer unit;
+    private Double rate;
+
+    public CurrencyModel() {}
+
+    public CurrencyModel(String name, Integer unit,String code, Double rate) {
+        this.name = name;
+        this.code = code;
+        this.unit = unit;
+        this.rate = rate;
+    }
 
     public String getName() {
         return name;
@@ -22,19 +31,28 @@ public class CurrencyModel {
         this.code = code;
     }
 
-    public Double getUnit() {
+    public Integer getUnit() {
         return unit;
     }
 
-    public void setUnit(Double unit) {
+    public void setUnit(Integer unit) {
         this.unit = unit;
     }
 
-    public Long getRate() {
+    public Double getRate() {
         return rate;
     }
 
-    public void setRate(Long rate) {
+    public void setRate(Double rate) {
         this.rate = rate;
+    }
+
+    @Override
+    public String toString() {
+        return "\n{\n" +
+                "a) name='" + name + '\n' +
+                "b) unit=" + unit + '\n' +
+                "c) rate=" + rate + '\n' +
+                '}' + '\n';
     }
 }
