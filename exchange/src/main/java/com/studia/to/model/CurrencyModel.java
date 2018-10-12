@@ -6,9 +6,10 @@ public class CurrencyModel {
     private Integer unit;
     private Double rate;
 
-    public CurrencyModel() {}
+    public CurrencyModel() {
+    }
 
-    public CurrencyModel(String name, Integer unit,String code, Double rate) {
+    public CurrencyModel(String name, Integer unit, String code, Double rate) {
         this.name = name;
         this.code = code;
         this.unit = unit;

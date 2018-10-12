@@ -20,27 +20,26 @@ public class ParserFromCSV implements Parser {
         scanner.useDelimiter(demiliter);
         scanner.nextLine();
 
-        while (scanner.hasNext())
-        {
+        while (scanner.hasNext()) {
             String name = scanner.nextLine();
             String[] parameters = name.split(demiliter);
             newCurrencyMap.put(parameters[2], map(parameters));
         }
         scanner.close();
-        System.out.println(newCurrencyMap);
+        //System.out.println(newCurrencyMap);
         return newCurrencyMap;
     }
 
-    private CurrencyModel map(String [] parameters) {
+    private CurrencyModel map(String[] parameters) {
         Integer unit = Integer.parseInt(parameters[1]);
-        System.out.println(parameters[1]);
+        //System.out.println(parameters[1]);
         Double rate = Double.parseDouble(replace(parameters[3]));
-        System.out.println(parameters[3]);
+        //System.out.println(parameters[3]);
         return new CurrencyModel(parameters[0], unit, parameters[2], rate);
     }
 
-    private String replace(String rate){
-        return rate.replaceAll(",",".");
+    private String replace(String rate) {
+        return rate.replaceAll(",", ".");
     }
 
 }

@@ -6,9 +6,11 @@ import com.studia.to.service.Service;
 
 public class ExchangeRate {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Parser parser = new ParserFromCSV();
         Service service = new Service(parser);
         service.getCSV();
+        service.checkInput();
+        service.exchangeResult();
     }
 }
