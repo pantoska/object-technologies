@@ -26,8 +26,10 @@ public class View {
         if (currencyController.check(input)) {
             System.out.println("Istnieje taki kod w bazie");
             codeFrom = input;
-        } else
+        } else {
             System.out.println("Nie istnieje taki kod w bazie");
+            System.exit(-1);
+        }
     }
 
     public void getInputAmount() {
@@ -36,8 +38,10 @@ public class View {
         if (digitController.check(input)) {
             System.out.println("Wprowadzono prawidłową ilość");
             amount = Double.parseDouble(input);
-        } else
+        } else {
             System.out.println("Wprowadzono złą ilość");
+            System.exit(-1);
+        }
     }
 
     public void getInputCodeTo() {
@@ -46,8 +50,10 @@ public class View {
         if (currencyController.check(input)) {
             System.out.println("Istnieje taki kod w bazie");
             codeTo = input;
-        } else
+        } else {
             System.out.println("Nie istnieje taki kod w bazie");
+            System.exit(-1);
+        }
     }
 
     public void calculate(){

@@ -11,11 +11,9 @@ public class ParserFromCSV implements Parser {
     private final String demiliter = ";";
 
     @Override
-    public Map<String, CurrencyModel> parse() throws Exception {
-        Scanner scanner = new Scanner(new File("exchange.csv"));
+    public Map<String, CurrencyModel> parse(String source) throws Exception {
+        Scanner scanner = new Scanner(new File(source));
         Map<String, CurrencyModel> newCurrencyMap = new HashMap<>();
-
-        String[] values;
 
         scanner.useDelimiter(demiliter);
         scanner.nextLine();
@@ -32,9 +30,7 @@ public class ParserFromCSV implements Parser {
 
     private CurrencyModel map(String[] parameters) {
         Integer unit = Integer.parseInt(parameters[1]);
-        //System.out.println(parameters[1]);
         Double rate = Double.parseDouble(replace(parameters[3]));
-        //System.out.println(parameters[3]);
         return new CurrencyModel(parameters[0], unit, parameters[2], rate);
     }
 

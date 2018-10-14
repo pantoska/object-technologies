@@ -5,5 +5,5 @@ import com.studia.to.model.CurrencyModel;
 import java.util.Map;
 
 public interface Parser {
-    Map<String, CurrencyModel> parse() throws Exception;
+    Map<String, CurrencyModel> parse(String source) throws Exception;
 }
