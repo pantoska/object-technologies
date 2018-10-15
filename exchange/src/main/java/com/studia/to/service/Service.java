@@ -4,11 +4,10 @@ package com.studia.to.service;
 import com.studia.to.calculation.Calculator;
 import com.studia.to.controller.Controller;
 import com.studia.to.controller.CurrencyController;
-import com.studia.to.controller.DigitController;
 import com.studia.to.model.CurrencyModel;
 import com.studia.to.parser.Parser;
 import com.studia.to.repository.CurrencyRepository;
-import com.studia.to.view.View;
+import com.studia.to.view.WebClientView;
 import java.util.Map;
 
 public class Service {
@@ -17,23 +16,24 @@ public class Service {
     private CurrencyRepository currencyRepository;
     private Controller currencyController;
     private Controller digitController;
-    private View view;
+    private WebClientView view;
     private Parser parserCSV;
     private Parser parserXML;
     private Calculator calculator;
     private String sourceXML = "https://www.nbp.pl/kursy/xml/lastA.xml";
     private String sourceCSV = "exchange.csv";
 
-    public Service(Parser parserCSV, Parser parserXML) {
+    public Service(Parser parserCSV, Parser parserXML, Controller digitController) {
         this.parserCSV = parserCSV;
         this.parserXML = parserXML;
+        this.digitController = digitController;
     }
 
     public void getCSV() {
         try {
             mapOfCurrencyCSV = parserCSV.parse(sourceCSV);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Cant get mapOfCurrency in CSV");
         }
     }
 
@@ -46,11 +46,10 @@ public class Service {
 
     }
 
-    public void checkInput() {
+    public void takeInput() {
         currencyController = new CurrencyController(currencyRepository);
-        digitController = new DigitController();
         calculator = new Calculator(currencyRepository);
-        view = new View(currencyController, digitController, calculator);
+        view = new WebClientView(currencyController, digitController, calculator);
         view.getInputAmount();
         view.getInputCodeFrom();
         view.getInputCodeTo();
@@ -61,7 +60,7 @@ public class Service {
     }
 
     public void showRates() {
-        currencyRepository = new CurrencyRepository(mapOfCurrencyCSV);
+        currencyRepository = new CurrencyRepository(mapOfCurrencyXML);
         System.out.println(currencyRepository.getAllCurrency());
     }
 

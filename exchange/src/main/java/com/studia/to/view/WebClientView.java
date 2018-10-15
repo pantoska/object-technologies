@@ -5,7 +5,7 @@ import com.studia.to.controller.Controller;
 
 import java.util.Scanner;
 
-public class View {
+public class WebClientView {
     private String codeFrom;
     private String codeTo;
     private Double amount;
@@ -14,7 +14,7 @@ public class View {
     private final Calculator calculator;
     Scanner reader = new Scanner(System.in);
 
-    public View(Controller currencyController, Controller digitController, Calculator calculator) {
+    public WebClientView(Controller currencyController, Controller digitController, Calculator calculator) {
         this.currencyController = currencyController;
         this.calculator = calculator;
         this.digitController = digitController;
