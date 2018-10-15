@@ -2,8 +2,6 @@ package com.studia.to.controller;
 
 import com.studia.to.repository.CurrencyRepository;
 
-import java.util.Scanner;
-
 public class CurrencyController implements Controller {
     private CurrencyRepository currencyRepository;
 

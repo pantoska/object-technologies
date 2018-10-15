@@ -47,7 +47,6 @@ public class Service {
     }
 
     public void checkInput() {
-        currencyRepository = new CurrencyRepository(mapOfCurrencyCSV);
         currencyController = new CurrencyController(currencyRepository);
         digitController = new DigitController();
         calculator = new Calculator(currencyRepository);
@@ -58,6 +57,12 @@ public class Service {
     }
 
     public void exchangeResult(){
-        view.calculate();
+        view.viewCalculation();
     }
+
+    public void showRates() {
+        currencyRepository = new CurrencyRepository(mapOfCurrencyCSV);
+        System.out.println(currencyRepository.getAllCurrency());
+    }
+
 }

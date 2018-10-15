@@ -56,7 +56,7 @@ public class View {
         }
     }
 
-    public void calculate(){
+    public void viewCalculation(){
         System.out.println(calculator.calculate(amount, codeFrom, codeTo));
     }
 
