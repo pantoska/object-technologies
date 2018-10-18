@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class View {
     private Scanner reader = new Scanner(System.in);
     private Validate validate = new Validate();
-    private Controller controller = new Controller();
     private List<Shape> listOfShapes = new ArrayList<Shape>() ;
+    private Controller controller = new Controller(listOfShapes);
     private Point pointStart;
     private Point pointEnd;
     private double radius;
@@ -90,5 +90,8 @@ public class View {
         }
     }
 
-
+    public void getList(){
+        listOfShapes = controller.getList();
+        System.out.println(listOfShapes);
+    }
 }

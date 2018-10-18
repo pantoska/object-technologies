@@ -5,14 +5,13 @@ import com.studia.to.model.Line;
 import com.studia.to.model.Point;
 import com.studia.to.model.Rectangle;
 import com.studia.to.shape.Shape;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    private List<Shape> listOfShapes = new ArrayList<Shape>() ;
+    private List<Shape> listOfShapes;
 
-    public Controller() {
+    public Controller(List<Shape> listOfShapes) {
+        this.listOfShapes = listOfShapes;
     }
 
     public void createCircle(Point point, double radius){
@@ -35,7 +34,6 @@ public class Controller {
     }
 
     public List<Shape> getList(){
-        System.out.println(listOfShapes.size());
         return listOfShapes;
     }
 }
