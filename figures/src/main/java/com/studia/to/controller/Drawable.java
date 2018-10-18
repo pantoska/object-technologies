@@ -1,4 +1,4 @@
-package com.studia.to.service;
+package com.studia.to.controller;
 
 public interface Drawable {
     void draw();
