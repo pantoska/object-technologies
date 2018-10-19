@@ -1,6 +1,6 @@
 package com.studia.to.repository;
 
-import com.studia.to.shape.Shape;
+import com.studia.to.shapeInterface.Shape;
 import java.util.List;
 
 public class FiguresRepository {

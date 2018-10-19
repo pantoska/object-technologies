@@ -4,13 +4,13 @@ import com.studia.to.model.Circle;
 import com.studia.to.model.Line;
 import com.studia.to.model.Point;
 import com.studia.to.model.Rectangle;
-import com.studia.to.shape.Shape;
+import com.studia.to.shapeInterface.Shape;
 import java.util.List;
 
-public class Controller {
+public class FiguresInit {
     private List<Shape> listOfShapes;
 
-    public Controller(List<Shape> listOfShapes) {
+    public FiguresInit(List<Shape> listOfShapes) {
         this.listOfShapes = listOfShapes;
     }
 

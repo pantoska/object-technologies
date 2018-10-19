@@ -1,8 +1,8 @@
 package com.studia.to.view;
 
-import com.studia.to.controller.Controller;
-import com.studia.to.shape.Shape;
-import com.studia.to.validation.Validate;
+import com.studia.to.controller.FiguresInit;
+import com.studia.to.shapeInterface.Shape;
+import com.studia.to.validation.NumbersValidation;
 import com.studia.to.model.Point;
 
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class View {
     private Scanner reader = new Scanner(System.in);
-    private Validate validate = new Validate();
+    private NumbersValidation numbersValidation = new NumbersValidation();
     private List<Shape> listOfShapes = new ArrayList<Shape>() ;
-    private Controller controller = new Controller(listOfShapes);
+    private FiguresInit figuresInit = new FiguresInit(listOfShapes);
     private Point pointStart;
     private Point pointEnd;
     private double radius;
@@ -24,36 +24,53 @@ public class View {
 
     public void getInput(){
         System.out.println("Podaj jaki rodzaj figury chcesz narysować: ");
-        String input = reader.next();
-        if(input.equals("koło")){
-            getCoordinates();
-            getRadius();
-            pointStart = new Point(x,y);
-            controller.createCircle(pointStart,radius);
-        }
-        else if(input.equals("prostokąt")){
-            getCoordinates();
-            getDimensions();
-            pointStart = new Point(x,y);
-            controller.createRectangle(width,height,pointStart);
-        }
-        else if(input.equals("linia")){
-            getCoordinates();
-            pointStart = new Point(x,y);
-            getCoordinates();
-            pointEnd = new Point(x,y);
-            controller.createLine(pointStart,pointEnd);
-        }
-        else
-            System.out.println("Wybierz inną figurę");
+//        String input = reader.next();
+        String input = "koło";
+        switch (input){
+            case "koło":
+                setCircleData();
+                break;
+            case "prostokąt":
+                setRectangleData();
+                break;
+            case "linia":
+                setLineData();
+                break;
+            default:
+                System.out.println("Wybierz inną figurę");
 
+        }
     }
 
-    public void getCoordinates(){
+    private void setLineData() {
+        setCoordinates();
+        pointStart = new Point(x,y);
+        setCoordinates();
+        pointEnd = new Point(x,y);
+        figuresInit.createLine(pointStart,pointEnd);
+    }
+
+    private void setRectangleData() {
+        setCoordinates();
+        setDimensions();
+        pointStart = new Point(x,y);
+        figuresInit.createRectangle(width,height,pointStart);
+    }
+
+    private void setCircleData() {
+        setCoordinates();
+        setRadius();
+        pointStart = new Point(x,y);
+        figuresInit.createCircle(pointStart,radius);
+    }
+
+    private void setCoordinates(){
         System.out.println("Podaj współrzędne punktu (x,y)");
-        String inputX = reader.next();
-        String inputY = reader.next();
-        if(validate.checkInt(inputX) && validate.checkInt(inputY)) {
+//        String inputX = reader.next();
+//        String inputY = reader.next();
+        String inputX = "1";
+        String inputY = "2";
+        if(numbersValidation.checkInt(inputX) && numbersValidation.checkInt(inputY)) {
             x = Integer.parseInt(inputX);
             y = Integer.parseInt(inputY);
         }
@@ -63,11 +80,11 @@ public class View {
         }
     }
 
-    private void getDimensions(){
+    private void setDimensions(){
         System.out.println("Podaj wymiary prostokąta (wysokość i długość)");
         String h = reader.next();
         String w = reader.next();
-        if(validate.checkDouble(h) && validate.checkDouble(w)) {
+        if(numbersValidation.checkDouble(h) && numbersValidation.checkDouble(w)) {
             height = Double.parseDouble(h);
             width  = Double.parseDouble(w);
         }
@@ -77,10 +94,11 @@ public class View {
         }
     }
 
-    private void getRadius(){
+    private void setRadius(){
         System.out.println("Podaj promień koła");
-        String r = reader.next();
-        if(validate.checkDouble(r)){
+//        String r = reader.next();
+        String r = "1";
+        if(numbersValidation.checkDouble(r)){
             radius = Double.parseDouble(r);
         }
         else{
@@ -90,8 +108,10 @@ public class View {
         }
     }
 
-    public void getList(){
-        listOfShapes = controller.getList();
+    public List<Shape> getList(){
+        listOfShapes = figuresInit.getList();
         System.out.println(listOfShapes);
+        return listOfShapes;
     }
+
 }

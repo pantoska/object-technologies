@@ -1,19 +1,18 @@
 package com.studia.to.model;
 
-import com.studia.to.shape.Shape2D;
+import com.studia.to.shapeInterface.Shape2D;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.awt.*;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Circle extends Shape2D {
     private Point center;
     private double radius;
 
-    public Circle(Point center, double radius) {
-        this.center = center;
-        this.radius = radius;
-    }
-
-    @Override
+     @Override
     public double perimeter() {
         return 2*Math.PI*radius;
     }
@@ -28,27 +27,4 @@ public class Circle extends Shape2D {
 
     }
 
-    public Point getCenter() {
-        return center;
-    }
-
-    public void setCenter(Point center) {
-        this.center = center;
-    }
-
-    public double getRadius() {
-        return radius;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
-    @Override
-    public String toString() {
-        return "Circle{" +
-                "center=" + center +
-                ", radius=" + radius +
-                '}';
-    }
-}
+ }

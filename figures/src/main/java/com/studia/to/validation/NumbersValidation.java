@@ -1,6 +1,6 @@
 package com.studia.to.validation;
 
-public class Validate {
+public class NumbersValidation {
 
     public boolean checkInt(String data) {
         try {
