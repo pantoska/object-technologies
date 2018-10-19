@@ -3,8 +3,8 @@ Design pattern classes
 
 ## Labs
 
-exchange - currency exchange calculator
-figures - figures paint
+* exchange - currency exchange calculator
+* figures - figures paint
 
 ## Build with
 
