@@ -1,20 +1,30 @@
 package com.studia.to.repository;
 
-import com.studia.to.shapeInterface.Shape;
+import com.studia.to.shapeInterface.ShapeEntity;
+
+import java.util.LinkedList;
 import java.util.List;
 
 public class FiguresRepository {
-    private List<Shape> list;
+    private final List<ShapeEntity> list = new LinkedList<>();
 
-    public FiguresRepository(List<Shape> list) {
-        this.list = list;
+    public void save(ShapeEntity shapeEntity) {
+        list.add(shapeEntity);
     }
 
-    public Shape getShape(int id){
+    public ShapeEntity getShape(int id) {
         return list.get(id);
     }
 
-    public List<Shape> getAllShapes(){
+    public List<ShapeEntity> getAllShapes() {
         return list;
+    }
+
+    public void removeAll() {
+        list.clear();
+    }
+
+    public void saveAll(List<ShapeEntity> shapes) {
+        list.addAll(shapes);
     }
 }

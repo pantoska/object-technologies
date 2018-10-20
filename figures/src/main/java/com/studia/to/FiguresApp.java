@@ -1,28 +1,23 @@
 package com.studia.to;
 
-import com.studia.to.drawing.Window;
-import com.studia.to.service.Service;
-import com.studia.to.view.View;
+import com.studia.to.controller.FigureController;
+import com.studia.to.view.ShapeView;
+import com.studia.to.repository.FiguresRepository;
+import com.studia.to.service.ShapeService;
 
-import java.util.Scanner;
+import java.awt.*;
 
 public class FiguresApp {
 
-    public static void main(String[] args){
-        View view = new View();
-        Scanner reader = new Scanner(System.in);
-        Service service = new Service(view);
-        Window window = new Window();
-        String input = null;
-        service.getInput();
-//        while (!"n".equals(input)){
-//            System.out.println("Czy chcesz wprowadzić dane? t/n");
-//            input = reader.next();
-//            if(!"n".equals(input))
-//                service.getInput();
-//        }
-        //service.run();
-        service.getList();
-        //window.drawShapes();
+    public static void main(String[] args) {
+        FiguresRepository figuresRepository = new FiguresRepository();
+        ShapeService shapeService = new ShapeService(figuresRepository);
+        ShapeView shapeView = new ShapeView();
+        EventQueue.invokeLater(() -> {
+            FigureController figureController = new FigureController(shapeService, shapeView);
+            figureController.init();
+            figureController.start();
+        });
+
     }
 }

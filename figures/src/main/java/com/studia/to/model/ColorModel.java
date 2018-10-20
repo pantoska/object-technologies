@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Point {
-    private int x;
-    private int y;
+public class ColorModel {
+    private int r;
+    private int g;
+    private int b;
 }
