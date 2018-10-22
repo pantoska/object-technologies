@@ -1,8 +1,6 @@
 package com.studia.to.converter;
 
 import com.studia.to.model.ColorModel;
-import com.studia.to.shapeInterface.ShapeEntity;
-
 import java.awt.*;
 
 public class ColorConverter {

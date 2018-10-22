@@ -1,7 +1,7 @@
 package com.studia.to.service;
 
 import com.studia.to.repository.FiguresRepository;
-import com.studia.to.shapeInterface.ShapeEntity;
+import com.studia.to.shapeClasses.ShapeEntity;
 
 import java.util.List;
 

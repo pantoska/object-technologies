@@ -1,7 +1,6 @@
 package com.studia.to.model;
 
-import com.studia.to.shapeInterface.ShapeEntity2D;
-import javafx.scene.paint.Color;
+import com.studia.to.shapeClasses.ShapeEntity2D;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

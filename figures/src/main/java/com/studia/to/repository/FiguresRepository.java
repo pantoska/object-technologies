@@ -1,6 +1,6 @@
 package com.studia.to.repository;
 
-import com.studia.to.shapeInterface.ShapeEntity;
+import com.studia.to.shapeClasses.ShapeEntity;
 
 import java.util.LinkedList;
 import java.util.List;

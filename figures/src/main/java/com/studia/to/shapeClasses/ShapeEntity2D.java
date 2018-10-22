@@ -1,4 +1,4 @@
-package com.studia.to.shapeInterface;
+package com.studia.to.shapeClasses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

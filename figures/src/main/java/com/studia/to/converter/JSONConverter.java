@@ -3,7 +3,7 @@ package com.studia.to.converter;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.studia.to.shapeInterface.ShapeEntity;
+import com.studia.to.shapeClasses.ShapeEntity;
 
 import java.io.File;
 import java.io.IOException;

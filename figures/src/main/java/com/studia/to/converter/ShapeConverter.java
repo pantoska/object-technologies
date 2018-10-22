@@ -3,7 +3,7 @@ package com.studia.to.converter;
 import com.studia.to.model.Circle;
 import com.studia.to.model.Line;
 import com.studia.to.model.Rectangle;
-import com.studia.to.shapeInterface.ShapeEntity;
+import com.studia.to.shapeClasses.ShapeEntity;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;

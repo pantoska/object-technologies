@@ -6,12 +6,15 @@ import com.studia.to.converter.ShapeConverter;
 import com.studia.to.model.*;
 import com.studia.to.model.Point;
 import com.studia.to.model.Rectangle;
+import com.studia.to.shapeClasses.ShapeEntity1D;
+import com.studia.to.validation.ValidateData;
 import com.studia.to.view.ShapeView;
 import com.studia.to.service.ShapeService;
-import com.studia.to.shapeInterface.ShapeEntity;
+import com.studia.to.shapeClasses.ShapeEntity;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Line2D;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -24,6 +27,7 @@ public class FigureController {
     private final ShapeConverter shapeConverter = new ShapeConverter();
     private final JSONConverter jsonConverter = new JSONConverter();
     private final ColorConverter colorConverter = new ColorConverter();
+    private final ValidateData validateData = new ValidateData();
     private final String pathname = "/home/patrycja/TO/Object-technologies/figures/figures.json";
 
     public FigureController(ShapeService shapeService, ShapeView shapeView) {
@@ -39,7 +43,7 @@ public class FigureController {
     public synchronized void start() {
         Runnable runnable = () -> {
             while (true) {
-                System.out.println("Podaj jaką figurę chcesz narysować lub wpisz zapisz/otworz");
+                System.out.println("Podaj jaką figurę chcesz narysować (koło/prostokąt/linia) lub zapisz/otworz");
                 String input = scanner.next();
                 switch (input) {
                     case "koło":
@@ -70,13 +74,14 @@ public class FigureController {
         System.out.println("Podaj punkt x, y, promień ");
         int x = scanner.nextInt();
         int y = scanner.nextInt();
-        int radius = scanner.nextInt();
-
-        circle.setCenter(new Point(x, y));
-        circle.setRadius(radius);
-        setColor(circle);
-        shapeService.save(circle);
-        shapeView.setShape(shapeConverter.map(circle));
+        double radius = scanner.nextDouble();
+        if(validateData.checkCircleData(x,y,radius)) {
+            circle.setCenter(new Point(x, y));
+            circle.setRadius(radius);
+            setColor(circle);
+            shapeService.save(circle);
+            shapeView.setShape(shapeConverter.map(circle));
+        }
     }
 
     private void handleRectangleEvent() {
@@ -86,13 +91,14 @@ public class FigureController {
         int y = scanner.nextInt();
         double width = scanner.nextDouble();
         double height = scanner.nextDouble();
-
-        rectangle.setPoint(new Point(x,y));
-        rectangle.setWidth(width);
-        rectangle.setHeight(height);
-        setColor(rectangle);
-        shapeService.save(rectangle);
-        shapeView.setShape(shapeConverter.map(rectangle));
+        if(validateData.checkRectangle(x,y,width, height)) {
+            rectangle.setPoint(new Point(x, y));
+            rectangle.setWidth(width);
+            rectangle.setHeight(height);
+            setColor(rectangle);
+            shapeService.save(rectangle);
+            shapeView.setShape(shapeConverter.map(rectangle));
+        }
 
     }
 
@@ -104,11 +110,14 @@ public class FigureController {
         int x2 = scanner.nextInt();
         int y2 = scanner.nextInt();
 
-        line.setStart(new Point(x1,y1));
-        line.setEnd(new Point(x2,y2));
-        setColor(line);
-        shapeService.save(line);
-        shapeView.setShape(shapeConverter.map(line));
+        if(validateData.checkLine(x1,y1,x2,y2)) {
+            line.setStart(new Point(x1, y1));
+            line.setEnd(new Point(x2, y2));
+            setColor(line);
+            setThickness(line);
+            shapeService.save(line);
+            shapeView.setShape(shapeConverter.map(line));
+        }
     }
 
     private void setColor(ShapeEntity shapeEntity){
@@ -119,6 +128,13 @@ public class FigureController {
         shapeEntity.setColor(new ColorModel(r,g,b));
         shapeView.setColor( colorConverter.convert(shapeEntity.getColor()));
 
+    }
+
+    private void setThickness(ShapeEntity1D shapeEntity){
+        System.out.println("Podaj grubość linii:");
+        Integer thickness = scanner.nextInt();
+        shapeEntity.setThickness(thickness);
+        shapeView.setThickness(thickness);
     }
 
     private void handleWriteToFileEvent() {
@@ -151,6 +167,11 @@ public class FigureController {
         if(nr >= 0 && nr < shapes.size()) {
             Shape shape = shapeConverter.map(shapes.get(nr));
             Color color = colorConverter.convert(shapes.get(nr).getColor());
+            if(shape instanceof Line2D) {
+                ShapeEntity1D shape1d = (ShapeEntity1D) shapes.get(nr);
+                Integer thickness = shape1d.getThickness();
+                shapeView.setThickness(thickness);
+            }
             shapeView.setColor(color);
             shapeView.setShape(shape);
         }

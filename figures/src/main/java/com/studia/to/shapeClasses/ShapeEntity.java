@@ -1,4 +1,4 @@
-package com.studia.to.shapeInterface;
+package com.studia.to.shapeClasses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -7,8 +7,6 @@ import com.studia.to.model.Circle;
 import com.studia.to.model.ColorModel;
 import com.studia.to.model.Line;
 import com.studia.to.model.Rectangle;
-
-import java.awt.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
