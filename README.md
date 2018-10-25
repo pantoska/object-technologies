@@ -5,6 +5,7 @@ Design pattern classes
 
 * exchange - currency exchange calculator
 * figures - figures paint
+* vector - vectors calculation
 
 ## Build with
 
