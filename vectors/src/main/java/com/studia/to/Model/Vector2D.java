@@ -1,6 +1,8 @@
 package com.studia.to.Model;
 
-public class Vector2D implements IAlgebra {
+import com.studia.to.algebraInterfaces.Algebra;
+
+public class Vector2D implements Algebra {
     private double x;
     private double y;
 
