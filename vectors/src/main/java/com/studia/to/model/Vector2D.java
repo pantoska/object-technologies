@@ -1,6 +1,6 @@
-package com.studia.to.Model;
+package com.studia.to.model;
 
-import com.studia.to.algebraInterfaces.Algebra;
+import com.studia.to.interfaceAlgebra.Algebra;
 
 public class Vector2D implements Algebra {
     private double x;
@@ -33,5 +33,21 @@ public class Vector2D implements Algebra {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public double scalar(Vector2D vector){
+        return getX()*vector.getX()+getY()*vector.getY();
+    }
+
+    public Vector2D vector(Vector2D vector){
+        return new Vector2D(0,0);
+    }
+
+    @Override
+    public String toString() {
+        return "Vector2D{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

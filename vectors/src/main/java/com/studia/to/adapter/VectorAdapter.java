@@ -1,8 +1,8 @@
-package com.studia.to.Adapter;
+package com.studia.to.adapter;
 
-import com.studia.to.algebraInterfaces.Algebra;
-import com.studia.to.Model.Vector2D;
-import com.studia.to.Model.Vector3D;
+import com.studia.to.interfaceAlgebra.Algebra;
+import com.studia.to.model.Vector2D;
+import com.studia.to.model.Vector3D;
 
 public class VectorAdapter implements Algebra {
 
@@ -33,7 +33,7 @@ public class VectorAdapter implements Algebra {
         }
         else if(vector instanceof Vector3D){
             Vector3D vector3D = (Vector3D) vector;
-            return Math.sqrt(Math.pow(vector3D.getX(),2)+Math.pow(vector3D.getY(),2)+Math.pow(vector3D.getZ(),2));
+            return Math.sqrt(Math.pow(vector3D.getVector2D().getX(),2)+Math.pow(vector3D.getVector2D().getY(),2)+Math.pow(vector3D.getZ(),2));
         }
         else
             return 0;
@@ -43,9 +43,6 @@ public class VectorAdapter implements Algebra {
         if (vector instanceof Vector2D) {
             Vector2D vector2D = (Vector2D) vector;
             return Math.atan2(vector2D.getY(), vector2D.getX());
-        } else if (vector instanceof Vector3D) {
-            Vector3D vector3D = (Vector3D) vector;
-            return 100;
         }
         else
             return 0;

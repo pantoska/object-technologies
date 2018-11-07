@@ -1,4 +1,4 @@
-package com.studia.to.algebraInterfaces;
+package com.studia.to.interfaceAlgebra;
 
 public interface Algebra {
     Double abs();
