@@ -6,7 +6,7 @@ public class Node {
     public Node() {
     }
 
-    public Node(String name) {
+    public Node(String name){
         this.name = name;
     }
 
@@ -18,4 +18,10 @@ public class Node {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return
+                " {name='" + name + '\'' +
+                '}';
+    }
 }

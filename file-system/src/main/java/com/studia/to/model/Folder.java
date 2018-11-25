@@ -11,10 +11,6 @@ public class Folder extends Node {
         this.parent = parent;
     }
 
-    public Folder(String name) {
-        super(name);
-    }
-
     public Folder() {
     }
 
@@ -22,8 +18,13 @@ public class Folder extends Node {
         return nodeList;
     }
 
-    public Node findNode(Integer index){
-        return nodeList.get(index);
+    public Node findNode(String name){
+        for (Node node: nodeList) {
+            if(name.equals(node.getName())){
+                return node;
+            }
+        }
+        return null;
     }
 
     public void addNode(Node node){
@@ -37,4 +38,7 @@ public class Folder extends Node {
     public void setParent(Node node){
         this.parent = parent;
     }
+
+
+
 }

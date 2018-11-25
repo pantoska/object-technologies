@@ -4,10 +4,13 @@ public class File extends Node {
     Node parent;
     String value;
 
-    public File(Node parent, String value) {
+    public File(Node parent, String value, String name) {
+        super(name);
         this.parent = parent;
         this.value = value;
     }
+
+    public File(){}
 
     public Node getParent() {
         return parent;
