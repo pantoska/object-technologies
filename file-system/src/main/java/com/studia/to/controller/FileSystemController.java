@@ -17,6 +17,8 @@ public class FileSystemController extends Folder {
     protected ArrayList<Folder> folderList = new ArrayList<>();
     protected ArrayList<File> fileList = new ArrayList<>();
 
+    private ArrayList<Node> firstRow = new ArrayList<>();
+
     public FileSystemController() {
     }
 
@@ -37,8 +39,6 @@ public class FileSystemController extends Folder {
         }
 
         addNode(node);
-        System.out.println("Dodano nowy folder");
-        System.out.println("Rozmiar listy " + findAll().size());
     }
 
     public void setNode(){
@@ -79,12 +79,23 @@ public class FileSystemController extends Folder {
     }
 
     public void printAllContent(){
-        for(int i=0; i<folderList.size();i++){
-            //Folder folder = (Folder) nodeList.get(i);
-            System.out.println( folderList.get(i).getName() + " Parent " + folderList.get(i).getParent().getName());
+        for(int i=0; i<folderList.size();i++) {
+            if (folderList.get(i).getParent().getName().equals("root")) {
+                firstRow.add(folderList.get(i));
+            }
         }
-        for(int i=0; i<fileList.size();i++){
-            System.out.println( fileList.get(i).getName() + " Parent " + fileList.get(i).getParent().getName());
+        System.out.println("root");
+        for(int i=0; i<firstRow.size();i++){
+            System.out.println("    " + firstRow.get(i).getName());
+            for(int j=0; j<folderList.size();j++){
+                if(folderList.get(j).getParent().getName().equals(firstRow.get(i).getName())) {
+                    System.out.println("        " + folderList.get(j).getName());
+                    for (int k = 0; k < fileList.size(); k++) {
+                        if (fileList.get(k).getParent().getName().equals(firstRow.get(i).getName()))
+                            System.out.println("        " + fileList.get(k).getName());
+                    }
+                }
+            }
         }
     }
 
