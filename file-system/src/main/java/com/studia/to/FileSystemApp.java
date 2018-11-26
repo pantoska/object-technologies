@@ -12,23 +12,31 @@ public class FileSystemApp {
     public static void main(String [ ] args) {
         FileSystemController fileSystemController = new FileSystemController();
         Folder root = new Folder();
+        Folder folder = new Folder();
+        File file = new File();
         Scanner sc = new Scanner(System.in);
         String input;
 
        root.setName("root");
        root.setParent(null);
 
-       fileSystemController.addNode("folder1", root, new Folder());
-       fileSystemController.addNode("folder2", root, new Folder());
-       fileSystemController.addNode("folder3", root, new Folder());
+       fileSystemController.addNode("folder1", root, folder);
+       fileSystemController.addNode("folder2", root, folder);
+       fileSystemController.addNode("folder3", root, folder);
+       //fileSystemController.addNode("plik0.0", root, file);
 
-       fileSystemController.addNode("folder1.1", fileSystemController.getNode("folder1"), new Folder());
-       fileSystemController.addNode("folder2.1", fileSystemController.getNode("folder2"), new Folder());
-       fileSystemController.addNode("folder3.1", fileSystemController.getNode("folder3"), new Folder());
+       fileSystemController.addNode("folder1.1", fileSystemController.getNode("folder1"), folder);
+       fileSystemController.addNode("folder2.1", fileSystemController.getNode("folder2"), folder);
+       fileSystemController.addNode("folder3.1", fileSystemController.getNode("folder3"), folder);
 
-       fileSystemController.addNode("plik1", fileSystemController.getNode("folder1"), new File());
-       fileSystemController.addNode("plik2", fileSystemController.getNode("folder2"), new File());
-       fileSystemController.addNode("plik3", fileSystemController.getNode("folder3"), new File());
+       fileSystemController.addNode("plik1", fileSystemController.getNode("folder1"), file);
+       fileSystemController.addNode("plik2", fileSystemController.getNode("folder2"), file);
+       fileSystemController.addNode("plik3", fileSystemController.getNode("folder3"), file);
+
+
+        //fileSystemController.addNode("plik1.2", fileSystemController.getNode("folder2"), file);
+
+
 
 
 

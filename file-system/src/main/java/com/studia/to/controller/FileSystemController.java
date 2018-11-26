@@ -16,7 +16,6 @@ public class FileSystemController extends Folder {
     private File file;
     protected ArrayList<Folder> folderList = new ArrayList<>();
     protected ArrayList<File> fileList = new ArrayList<>();
-
     private ArrayList<Node> firstRow = new ArrayList<>();
 
     public FileSystemController() {
@@ -25,10 +24,8 @@ public class FileSystemController extends Folder {
     public void addNode(String name, Node parent, Node type) {
         node = new Node(name);
         check = new Check(node);
-        while(!checkNode()){
+        while(!checkNode())
             setNode();
-        }
-
         if(type instanceof Folder){
             folder = new Folder(name, parent);
             addFolder(folder);
@@ -37,7 +34,6 @@ public class FileSystemController extends Folder {
             file = new File(parent,"blabla",name);
             addFile(file);
         }
-
         addNode(node);
     }
 
@@ -49,9 +45,8 @@ public class FileSystemController extends Folder {
 
     private boolean checkNode(){
       for(int i=0; i<nodeList.size();i++){
-           if(node.getName().equals(nodeList.get(i).getName())) {
+           if(node.getName().equals(nodeList.get(i).getName()))
                return false;
-           }
            else if(!check.checkName(node.getName()))
                return false;
       }
@@ -59,48 +54,42 @@ public class FileSystemController extends Folder {
     }
 
     public Node getNode(String name) {
-        for (int i = 0; i < folderList.size(); i++) {
-            if (name.equals(folderList.get(i).getName())) {
-                return folderList.get(i);
-            }
+        for (int i = 0; i < nodeList.size(); i++) {
+            if (name.equals(nodeList.get(i).getName()))
+                return nodeList.get(i);
         }
         return null;
     }
 
     public void printFolderContent(String name) {
-        for (int i = 0; i < folderList.size(); i++) {
-            if (name.equals(folderList.get(i).getParent().getName()))
-                System.out.println(folderList.get(i).getName());
-        }
-        for (int i = 0; i < fileList.size(); i++) {
-            if(name.equals(fileList.get(i).getParent().getName()))
-                System.out.println(fileList.get(i).getName());
-        }
+        for(Folder folder: folderList)
+            if(name.equals(folder.getParent().getName()))
+                System.out.println("        " + folder.getName());
+
+        for(File file: fileList)
+            if(name.equals(file.getParent().getName()))
+                System.out.println("        " + file.getName());
     }
 
     public void printAllContent(){
-        for(int i=0; i<folderList.size();i++) {
-            if (folderList.get(i).getParent().getName().equals("root")) {
-                firstRow.add(folderList.get(i));
-            }
-        }
-        System.out.println("root");
-        for(int i=0; i<firstRow.size();i++){
-            System.out.println("    " + firstRow.get(i).getName());
-            for(int j=0; j<folderList.size();j++){
-                if(folderList.get(j).getParent().getName().equals(firstRow.get(i).getName())) {
-                    System.out.println("        " + folderList.get(j).getName());
-                    for (int k = 0; k < fileList.size(); k++) {
-                        if (fileList.get(k).getParent().getName().equals(firstRow.get(i).getName()))
-                            System.out.println("        " + fileList.get(k).getName());
-                    }
-                }
-            }
-        }
+        setfirstRow();
+        for(Node node: firstRow){
+            System.out.println("    " + node.getName());
+            printFolderContent(node.getName());
+       }
     }
 
+    private void setfirstRow(){
+        for(Folder folder: folderList) {
+            if (folder.getParent().getName().equals("root"))
+                firstRow.add(folder);
+        }
+        for (File file: fileList){
+            if (file.getParent().getName().equals("root"))
+                firstRow.add(file);
+        }
+        System.out.println("root");
+    }
     private void addFolder(Folder folder){ folderList.add(folder);}
     private void addFile(File file){ fileList.add(file);}
-
-
 }
