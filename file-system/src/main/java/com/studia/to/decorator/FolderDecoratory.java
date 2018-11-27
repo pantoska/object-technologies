@@ -1,4 +1,4 @@
-package com.studia.to.controller;
+package com.studia.to.decorator;
 
 import com.studia.to.model.File;
 import com.studia.to.model.Folder;
@@ -8,7 +8,7 @@ import com.studia.to.validation.Check;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileSystemController extends Folder {
+public class FolderDecoratory extends Folder {
     Scanner sc = new Scanner(System.in);
     private Node node;
     private Check check;
@@ -16,9 +16,11 @@ public class FileSystemController extends Folder {
     private File file;
     protected ArrayList<Folder> folderList = new ArrayList<>();
     protected ArrayList<File> fileList = new ArrayList<>();
-    private ArrayList<Node> firstRow = new ArrayList<>();
+    private  StringBuilder stringBuilder = new StringBuilder();
 
-    public FileSystemController() {
+    public FolderDecoratory() {
+        node = new Node("root");
+        addNode(node);
     }
 
     public void addNode(String name, Node parent, Node type) {
@@ -61,35 +63,26 @@ public class FileSystemController extends Folder {
         return null;
     }
 
-    public void printFolderContent(String name) {
+    public void printFolderContent(String name, Integer mode) {
+        if(mode == 1){System.out.println(stringBuilder.toString() + name);}
         for(Folder folder: folderList)
-            if(name.equals(folder.getParent().getName()))
-                System.out.println("        " + folder.getName());
+            if (name.equals(folder.getParent().getName())) {
+                stringBuilder.append("  ");
+                printFolderContent(folder.getName(),1);
+            }
 
-        for(File file: fileList)
-            if(name.equals(file.getParent().getName()))
-                System.out.println("        " + file.getName());
+        for(File file: fileList) {
+            if (name.equals(file.getParent().getName())) {
+                printFolderContent(file.getName(),1);
+                stringBuilder = new StringBuilder();
+            }
+        }
     }
 
     public void printAllContent(){
-        setfirstRow();
-        for(Node node: firstRow){
-            System.out.println("    " + node.getName());
-            printFolderContent(node.getName());
-       }
+        printFolderContent("root",1);
     }
 
-    private void setfirstRow(){
-        for(Folder folder: folderList) {
-            if (folder.getParent().getName().equals("root"))
-                firstRow.add(folder);
-        }
-        for (File file: fileList){
-            if (file.getParent().getName().equals("root"))
-                firstRow.add(file);
-        }
-        System.out.println("root");
-    }
     private void addFolder(Folder folder){ folderList.add(folder);}
     private void addFile(File file){ fileList.add(file);}
 }
