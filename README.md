@@ -3,9 +3,11 @@ Design pattern classes
 
 ## Labs
 
-* exchange - currency exchange calculator
+* exchange - currency exchange calculator (MVC pattern)
 * figures - figures paint
-* vector - vectors calculation
+* vectors - vectors calculation (Decorator and Adapter pattern)
+* file-system - creating files and directories with ability to display tree and content of directories(Composite and Proxy pattern)
+* telephone-book - book with numbers assigned to people (Flyweight pattern)
 
 ## Build with
 
