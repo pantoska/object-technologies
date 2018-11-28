@@ -5,10 +5,15 @@
 *.log
 
 # Intellij
-#.idea/
+.idea/
 *.iml
 *.iws
 
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+.idea
+
+gradlew
+gradlew.bat
+gradle/wrapper
