@@ -18,7 +18,9 @@ public class NameRepository {
             if(name.equals(n.getName())) {
                 return n;
             }
-        return null;
+        Name nameObj = new Name(name);
+        names.add(nameObj);
+        return nameObj;
     }
 
     public void showRepository(){

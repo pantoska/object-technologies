@@ -1,26 +1,21 @@
 package com.studia.to.name;
 
+import java.util.Objects;
+
 public class NameWrapper {
-    String name;
-    String surname;
-    public NameWrapper(String name, String surname) {
+    private Name name;
+    private Name surname;
+
+    public NameWrapper(Name name, Name surname) {
         this.name = name;
         this.surname = surname;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public String  getSurname() {
+    public Name getSurname() {
         return surname;
-    }
-
-    @Override
-    public String toString() {
-        return "NameWrapper{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
     }
 }
