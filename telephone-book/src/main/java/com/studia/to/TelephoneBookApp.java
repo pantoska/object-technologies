@@ -1,33 +1,33 @@
 package com.studia.to;
 
-import com.studia.to.name.Name;
-import com.studia.to.name.NameWrapper;
 import com.studia.to.phone.PhoneNumber;
-//import com.studia.to.phone.PhoneNumberRepository;
+import com.studia.to.phone.PhoneNumberRepository;
 
-import java.util.Arrays;
 import java.util.Set;
 
 public class TelephoneBookApp {
     public static void main(String[] args) {
+        PhoneNumberRepository phoneNumberRepository = new PhoneNumberRepository();
 
-//        PhoneNumberRepository phoneNumberRepository = new PhoneNumberRepository();
-//
-//        phoneNumberRepository.addNumber("Patrycja","Zań",new PhoneNumber("43534346"));
-//        phoneNumberRepository.addNumber("Bartek", "Ziomek",new PhoneNumber("435342346"));
-//        phoneNumberRepository.addNumber("Bartek", "Ziętek",new PhoneNumber("666666666"));
-//        phoneNumberRepository.addNumber("Bartek","Wnuk",new PhoneNumber("666246666"));
-//        phoneNumberRepository.addNumber("Julia","Walter",new PhoneNumber("666246666"));
-//
-//
-//        Set<PhoneNumber> findNumbers = phoneNumberRepository.findPhoneNumbers("Bartek", "null");
+        phoneNumberRepository.addNumber("Patrycja","Zań",new PhoneNumber("43534346"));
+        phoneNumberRepository.addNumber("Bartek", "Ziomek",new PhoneNumber("435342346"));
+        phoneNumberRepository.addNumber("Bartek", "Ziętek",new PhoneNumber("666666666"));
+        phoneNumberRepository.addNumber("Bartek","Ziętek",new PhoneNumber("666246666"));
+        phoneNumberRepository.addNumber("Julia","Walter",new PhoneNumber("666246666"));
+        phoneNumberRepository.addNumber("Bartek","Wnuk",new PhoneNumber("66624221666"));
+
+
+//        Set<PhoneNumber> findNumbers = phoneNumberRepository.findPhoneNumbers("Bartek", "Ziętek");
 //        for (PhoneNumber phoneNumber: findNumbers) {
-//            System.et<PhoneNumber> phoneNumberList = new HashSet<>();out.println(phoneNumber.getNumber());
+//            System.out.println(phoneNumber.getNumber());
 //        }
-//
-//        //phoneNumberRepository.showContent();
-        boolean equals = new NameWrapper("Manh", "Tu").equals(new NameWrapper("Manh", "Tu"));
-        System.out.println(equals);
+
+        Set<PhoneNumber> findNumbers2 = phoneNumberRepository.findPhoneNumbers("Patrycja", "Zań");
+        for (PhoneNumber phoneNumber: findNumbers2) {
+            System.out.println(phoneNumber.getNumber());
+        }
+
+//        phoneNumberRepository.showContent();
     }
 
 }

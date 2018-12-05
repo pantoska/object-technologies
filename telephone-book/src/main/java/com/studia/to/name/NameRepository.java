@@ -13,14 +13,15 @@ public class NameRepository {
     }
 
 
-    public Name findName(String name){
-        for(Name n: names)
-            if(name.equals(n.getName())) {
+    public Name findName(String name) {
+        for (Name n : names)
+            if (name.equals(n.getName())) {
                 return n;
             }
-        Name nameObj = new Name(name);
-        names.add(nameObj);
-        return nameObj;
+
+        Name nameObject = new Name(name);
+        names.add(nameObject);
+        return nameObject;
     }
 
     public void showRepository(){
