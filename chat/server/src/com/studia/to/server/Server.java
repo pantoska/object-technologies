@@ -1,4 +1,4 @@
-package com.studia.to;
+package com.studia.to.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -13,48 +13,51 @@ public class Server {
     private Scanner scanner = new Scanner(System.in);
     private String request;
 
-    private void getResponse(){
-        clients.forEach(clients -> clients.getResponse());
-    }
-
-    public void notifyAllClients(String message) {
-        clients.forEach(client -> client.sendMessage(message));
+    private void notifyAllClients(String message) {
+        for(ClientHandler clientHandler: clients)
+                clientHandler.sendMessage(message);
     }
 
     private String giveCommand(){
-        if(request.equals("z"))
-            return "REQUEST Podaj zdjęcie";
+        if(request.equals("s"))
+            return "Send screenshot";
         else if(request.equals("t"))
-            return "REQUEST Podaj tekst";
+            return "Send text";
         return null;
+    }
+
+    public void remove(ClientHandler clientHandler){
+        clients.remove(clientHandler);
     }
 
     public void run() throws IOException {
         System.out.println("The server is running.");
         listener = new ServerSocket(port);
+        listen();
         try {
             while (true) {
-                listen();
-                System.out.println("Podaj czy chcesz zdjęcie(z) czy tekst(t)");
+                System.out.println("Commmand: screenshot(s) text(t)");
                 request = scanner.next();
                 notifyAllClients(giveCommand());
             }
-        } finally {
+        }
+        finally {
             listener.close();
         }
     }
 
-    public void listen() throws IOException {
+    public void listen(){
         new Thread(() -> {
             ClientHandler clientHandler = null;
             try {
-                new Thread(clientHandler = new ClientHandler(listener.accept())).start();
+                while(true) {
+                    new Thread(clientHandler = new ClientHandler(listener.accept(),this)).start();
+                    clients.add(clientHandler);
+                    System.out.println("Add new client");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            clients.add(clientHandler);
-            System.out.println("Dodano nowego klienta");
         }).start();
     }
-
 }
