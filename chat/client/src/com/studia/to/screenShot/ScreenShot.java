@@ -1,4 +1,4 @@
-package com.studia.to;
+package com.studia.to.screenShot;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -1,7 +1,6 @@
 package com.studia.to.state;
 
 public class Context {
-
     State state;
 
     public Context(State state) {
