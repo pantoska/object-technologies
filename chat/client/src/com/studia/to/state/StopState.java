@@ -1,6 +1,6 @@
 package com.studia.to.state;
 
-import com.studia.to.Client;
+import com.studia.to.client.Client;
 
 import java.io.BufferedReader;
 import java.io.IOException;

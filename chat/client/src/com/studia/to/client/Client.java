@@ -1,4 +1,4 @@
-package com.studia.to;
+package com.studia.to.client;
 
 import com.studia.to.state.Context;
 import com.studia.to.state.StartState;

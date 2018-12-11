@@ -1,4 +1,4 @@
-package com.studia.to.screenShot;
+package com.studia.to.screenshot;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -26,7 +26,6 @@ public class ScreenShot {
     public File getFile(){
         return file;
     }
-
     public byte[] getSendData(){
         return sendData;
     }

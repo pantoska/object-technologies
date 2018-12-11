@@ -1,7 +1,7 @@
 package com.studia.to.state;
 
-import com.studia.to.Client;
-import com.studia.to.screenShot.ScreenShot;
+import com.studia.to.client.Client;
+import com.studia.to.screenshot.ScreenShot;
 
 import java.awt.*;
 import java.io.DataOutputStream;
@@ -32,11 +32,11 @@ public class StartState implements State {
 
     @Override
     public void doAction() {
-        System.out.println(line.substring(8));
+        System.out.println(line);
         try {
-            if (line.equals("REQUEST Podaj tekst"))
+            if (line.startsWith("Send text"))
                 sendText();
-            else if (line.equals("REQUEST Podaj zdjęcie"))
+            else if (line.startsWith("Send screenshot"))
                 sendCapture();
             System.out.println("Sending...");
         } catch (Exception e){
@@ -57,7 +57,7 @@ public class StartState implements State {
     private void sendCapture() throws IOException, AWTException {
         screenShot.shootCapture();
         screenShot.getCapture();
-        System.out.println("Aby wysłać screenshota wpisz s");
+        System.out.println("To send screenshot write s");
         String response = scanner.next();
         if(response.equals("s")){
             dataOutputStream.writeInt((int) screenShot.getFile().length());
