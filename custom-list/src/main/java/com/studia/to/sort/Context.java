@@ -1,6 +1,6 @@
 package com.studia.to.sort;
 
-import com.studia.to.iterator.IntList;
+import com.studia.to.iterator.IntArray;
 import com.studia.to.iterator.Iterator;
 
 import java.util.ArrayList;
@@ -17,11 +17,11 @@ public class Context {
         return currentSort;
     }
 
-    public List<IntList> iterator(Iterator iterator){
-        List<IntList> list = new ArrayList<>();
+    public List<IntArray> iterator(Iterator iterator){
+        List<IntArray> list = new ArrayList<>();
         while (iterator.hasNext()){
-            IntList list1 = ((IntList) iterator.next());
-            list.add((IntList)currentSort.sort(list1));
+            IntArray list1 = ((IntArray) iterator.next());
+            list.add((IntArray)currentSort.sort(list1));
         }
         return list;
     }

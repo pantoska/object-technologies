@@ -2,14 +2,11 @@ package com.studia.to.iterator;
 
 import java.util.List;
 
-/**
- * Klasa obsługująca dostęp do danych zawartych w liście
- */
 public class IntIterator implements Iterator{
-    private List<IntList> intCollection;
+    private List<IntArray> intCollection;
     private int currentPosition = 0;
 
-    public IntIterator(List<IntList> intCollection) {
+    public IntIterator(List<IntArray> intCollection) {
         this.intCollection = intCollection;
     }
 

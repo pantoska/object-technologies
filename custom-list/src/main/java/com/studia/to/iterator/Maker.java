@@ -5,7 +5,7 @@ import java.util.List;
 public class Maker implements IteratorMaker {
 
     @Override
-    public Iterator iterator(List<IntList> list) {
+    public Iterator iterator(List<IntArray> list) {
         return new IntIterator(list);
     }
 }
