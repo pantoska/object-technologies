@@ -8,7 +8,7 @@ Design pattern classes
 * vectors - vectors calculation (Decorator and Adapter pattern)
 * file-system - creating files and directories with ability to display tree and content of directories(Composite and Proxy pattern)
 * telephone-book - book with numbers assigned to people (Flyweight pattern)
-* chat - simple communication between client and server (State, Chain Responsibility and Observer pattern)
+* communicator - simple communication between client and server (State, Chain Responsibility and Observer pattern)
 
 ## Build with
 

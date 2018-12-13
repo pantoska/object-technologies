@@ -44,7 +44,7 @@ public class ClientHandler implements Runnable {
                 dataInputStream = new DataInputStream(socket.getInputStream());
                 while (true) {
                     int length = dataInputStream.readInt();
-                    input = new byte[length];
+                    input = new byte[length+1];
                     String s = dataInputStream.readUTF();
                     dataInputStream.read(input);
                     handlerMessage.handle(s,input);

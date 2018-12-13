@@ -31,6 +31,13 @@ public class FileSystemApp {
        folderDecoratory.addNode("plik2", folderDecoratory.getNode("folder2"), file);
        folderDecoratory.addNode("plik3", folderDecoratory.getNode("folder3"), file);
 
+       //folderDecoratory.addNode("plik1.1", folderDecoratory.getNode("folder1"), file);
+        //folderDecoratory.addNode("folder1.11", folderDecoratory.getNode("folder1.1"), file);
+
+
+
+
+
 //       for(int i =0;i<3;i++){
 //           System.out.println("Podaj nazwę folderu " + i);
 //           folderDecoratory.addNode(sc.nextLine(), root, new Folder());

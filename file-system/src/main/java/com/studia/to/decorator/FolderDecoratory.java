@@ -77,6 +77,7 @@ public class FolderDecoratory extends Folder {
                 stringBuilder = new StringBuilder();
             }
         }
+
     }
 
     public void printAllContent(){
