@@ -2,6 +2,7 @@ package com.studia.to;
 
 import com.studia.to.iterator.*;
 import com.studia.to.sort.Context;
+import com.studia.to.sort.HeapSort;
 import com.studia.to.sort.QuickSort;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,8 @@ public class ListApp {
 
         Context context = new Context(new QuickSort());
         List<IntArray> list = context.iterator(iterator);
+//        Context context = new Context(new HeapSort());
+//        List<IntArray> list = context.iterator(iterator);
 
         System.out.println("Po posortowaniu: ");
         for (IntArray intArray : list) {
