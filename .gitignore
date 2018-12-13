@@ -13,7 +13,7 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 .idea
-
+.gradle
 gradlew
 gradlew.bat
 gradle/wrapper
