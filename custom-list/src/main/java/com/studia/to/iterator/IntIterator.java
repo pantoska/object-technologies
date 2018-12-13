@@ -21,7 +21,7 @@ public class IntIterator implements Iterator{
     }
 
     @Override
-    public IntList next() {
+    public Object next() {
         return intCollection.get(currentPosition++);
     }
 

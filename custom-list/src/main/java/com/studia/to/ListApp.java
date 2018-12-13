@@ -1,7 +1,8 @@
 package com.studia.to;
 
 import com.studia.to.iterator.*;
-
+import com.studia.to.sort.Context;
+import com.studia.to.sort.QuickSort;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,18 +19,30 @@ public class ListApp {
         intList1.add(50);
         intList1.add(55);
 
-        intList1.add(122);
-        intList1.add(40);
-        intList1.add(90);
-        intList1.add(55);
+        intList2.add(122);
+        intList2.add(40);
+        intList2.add(90);
+        intList2.add(55);
 
         mainList.add(intList1);
         mainList.add(intList2);
 
         Iterator iterator = new Maker().iterator(mainList);
 
-        while (iterator.hasNext()){
-            for(Integer number: iterator.next().getList())
+//        System.out.println("Przed posortowaniem: ");
+//        while (iterator.hasNext()){
+//            for(Integer number: ((IntList) iterator.next()).getList())
+//                System.out.println(number);
+//        }
+
+
+        Context context = new Context(new QuickSort());
+        List<IntList> list = context.iterator(iterator);
+
+        System.out.println("Po posortowaniu: ");
+        for (IntList intList: list) {
+            System.out.println(" ");
+            for (Integer number : intList.getList())
                 System.out.println(number);
         }
     }
