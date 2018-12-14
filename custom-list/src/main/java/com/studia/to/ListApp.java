@@ -6,26 +6,25 @@ import com.studia.to.sort.HeapSort;
 import com.studia.to.sort.QuickSort;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ListApp {
     public static void main(String[] args) {
+        Random random = new Random();
+        IntArray intArray;
+        int[] ints;
+        int size = 5;
 
         List<IntArray> mainList = new ArrayList<>();
-        IntArray intArray1 = new IntArray();
-        IntArray intArray2 = new IntArray();
-        IntArray intArray3 = new IntArray();
 
-        int[] ints1 = {6, 7, 44, 1, 67};
-        int[] ints2 = {444, 72, 54, 111, 60};
-        int[] ints3 = {14, 62, 53, 191, 220};
-
-        intArray1.setList(ints1);
-        intArray2.setList(ints2);
-        intArray3.setList(ints3);
-
-        mainList.add(intArray1);
-        mainList.add(intArray2);
-        mainList.add(intArray3);
+        for(int i=0;i<10;i++){
+            intArray = new IntArray();
+            ints = new int[size];
+            for(int j=0;j<size;j++)
+                ints[j] = random.nextInt(100);
+            intArray.setList(ints);
+            mainList.add(intArray);
+        }
 
         Iterator iterator = new Maker().iterator(mainList);
 
@@ -35,16 +34,13 @@ public class ListApp {
 //                System.out.println(number);
 //        }
 
-
-        Context context = new Context(new QuickSort());
-        List<IntArray> list = context.iterator(iterator);
-//        Context context = new Context(new HeapSort());
-//        List<IntArray> list = context.iterator(iterator);
+//        Context context = new Context(new QuickSort());
+        Context context = new Context(new HeapSort());
 
         System.out.println("Po posortowaniu: ");
-        for (IntArray intArray : list) {
+        for (IntArray array : context.iterator(iterator)) {
             System.out.println(" ");
-            for (Integer number : intArray.getList())
+            for (Integer number : array.getList())
                 System.out.println(number);
         }
     }
